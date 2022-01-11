@@ -1,0 +1,24 @@
+{
+  "extends": ["wesbos/typescript"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "unused-imports"],
+  "rules": {
+    "prefer-const": 0,
+    "react/prop-types": 0,
+    "react/destructuring-assignment": 0,
+    "react-hooks/rules-of-hooks": 0,
+    "unused-imports/no-unused-imports-ts": 2,
+    "@typescript-eslint/no-unused-vars": "off",
+    "react/jsx-no-bind": [
+      0,
+      {
+        "ignoreDOMComponents": true,
+        "ignoreRefs": true,
+        "allowArrowFunctions": true,
+        "allowFunctions": true,
+        "allowBind": true
+      }
+    ],
+    "react/jsx-boolean-value": 0
+  }
+}
