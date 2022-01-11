@@ -15,6 +15,7 @@
         "allowBind": true
       }
     ],
+
     "no-unused-expressions": "off",
     "react/jsx-boolean-value": 0
   }
