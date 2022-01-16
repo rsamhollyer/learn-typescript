@@ -1,9 +1,9 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
+import { TodosContext } from '../store/todos-context';
 import styles from './NewTodo.module.css';
 
-const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = ({
-  onAddTodo,
-}) => {
+const NewTodo: React.FC = () => {
+  const todoCtx = useContext(TodosContext);
   const todoTextRef = useRef<HTMLInputElement>(null);
 
   const submitHandler = (e: React.FormEvent) => {
@@ -14,9 +14,13 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = ({
     if (enteredText?.trim()?.length === 0) {
       throw Error('You must enter a todo!');
     }
-    if (enteredText) onAddTodo(enteredText);
+    if (enteredText) {
+      todoCtx.addTodo(enteredText);
+    }
   };
-
+  if (todoTextRef && todoTextRef.current && todoTextRef.current.value) {
+    todoTextRef.current.value = '';
+  }
   return (
     <form className={styles.form} onSubmit={submitHandler}>
       <label htmlFor="todo">New Todo</label>
